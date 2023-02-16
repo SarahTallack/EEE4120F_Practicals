@@ -14,6 +14,7 @@ using WAV
 using Dates
 using Plots
 using TickTock
+using Statistics
 
 # 1.2.1 Measuring Execution Time of rand()
 # t_start = now();
@@ -41,6 +42,8 @@ end
 tick()
 
 whiteNoiseArray = createwhiten(10);
+
+print("Number of samples: ", size(whiteNoiseArray), "\n")
 WAV.wavwrite(whiteNoiseArray,"white_noise_sound2.wav", Fs=4800)
 
 tock()
@@ -58,11 +61,42 @@ Plots.display(h)
 
 
 # 1.2.5 Implementing Pearson's Correlation
-#=
-function corr()
-    
-=#
-# 1.2.6 Comparing Correlation Function to Statistics Package's Correlation Function
 
+function corr(x,y)
+    xavg = mean(x)
+    yavg = mean(y)
+    r = (sum((x.-xavg).*(y.-yavg)))/sqrt(sum((x.-xavg).^2))/sqrt(sum((y.-yavg).^2))
+    return r
+end
+    
+# 1.2.6 Comparing Correlation Function to Statistics Package's Correlation Function
+r1 = corr(whiteNoiseArray,whiteNoise)
+println("Using corr function: ", r1);
+
+r2 = cor(whiteNoiseArray,whiteNoise)
+println("Using Statistics.cor function: ", r2, "\n");
 
 # 1.2.7 Correlation of Shifted Signals
+
+function sinusoid(f, Ns)
+    dt = 1/(Ns*f);
+    t = 0:dt:1/f;
+    rad = 2*pi*f.*t
+    wave = sin.(rad);
+    return wave
+end
+
+freq = [100, 1000, 48000];  # range of frequencies to test
+Ns = [100, 1000, 10000];    # range of number of samples
+
+for i in freq
+    for j in Ns
+        title = "Frequency of "* string(i)* "Hz, with "* string(j)* " samples"
+        Plots.display(Plots.scatter(sinusoid(i,j),title = title,legend = false,xlabel = "Time",ylabel = "Amplitude"))
+        sineWave = sinusoid(i,j);
+        sineWaveShift = circshift(sineWave, 10);
+        R = cor(sineWave,sineWaveShift);
+        println(title);
+        println("Correlation: ", R, "\n")
+    end
+end
