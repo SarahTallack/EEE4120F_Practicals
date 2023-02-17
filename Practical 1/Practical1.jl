@@ -83,6 +83,11 @@ function main()
             R = cor(sineWave,sineWaveShift)
             println("Frequency of ", string(i), "Hz, with ", string(j), " samples")
             println("Correlation: ", R, "\n")
+
+            h = Plots.scatter(sineWave,title = "Sine Wave",legend = false,xlabel = "Time",ylabel = "Amplitude")
+            Plots.display(h)
+            h = Plots.scatter(sineWaveShift,title = "Sine Wave",legend = false,xlabel = "Time",ylabel = "Amplitude")
+            Plots.display(h)
         end
     end
 
@@ -151,7 +156,7 @@ function sinusoid(f, Ns)
     # frequency and the number of samples. 
     # The sinusoid is stored in an array
     dt = 1/(Ns*f);
-    t = 0:dt:1/f;
+    t = dt:dt:1/f;
     rad = 2*pi*f.*t;
     wave = sin.(rad);
     return wave
