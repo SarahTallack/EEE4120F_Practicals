@@ -19,82 +19,66 @@ function main()
     # 1.2.1 Measuring Execution Time of rand()
     N = [5, 10, 50, 100];
     n = length(N);
-    timeRand , timeCreateWhiten, sampleSize, whiteNoise, whiteNoiseArray = whiteNoiseGeneration(20)
+    timeRand , timecreateWhiten, sampleSize, whiteNoise, whiteNoiseArray = whiteNoiseGeneration(20)
 
     for i in 1:n
-        timeRand , timeCreateWhiten, sampleSize, whiteNoise, whiteNoiseArray = whiteNoiseGeneration(N[i])
+        timeRand , timecreateWhiten, sampleSize, whiteNoise, whiteNoiseArray = whiteNoiseGeneration(N[i])
         println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         println("Time = ", N[i])
         println("Execution Time of rand() = ", timeRand)
-        println("Execution Time of createWhiten() = ", timeCreateWhiten)
+        println("Execution Time of createWhiten() = ", timecreateWhiten)
         println("Sample size = ", sampleSize)
         println()
+
+        # 1.2.3 Visual Confirmation of Uniform Distribution
+        h = Plots.histogram(whiteNoise,title = "Rand() function distributin for T = "*string(N[i])*"s",legend = false,xlabel = "Number Generated",ylabel = "Frequency")
+        Plots.display(h)
+        savefig(h, "C:\\Users\\sarah\\Documents\\1. UNIVERSITY\\University\\EEE4120F\\EEE4120F_Practicals\\Plots\\Noise\\NoiseRand"*string(N[i])*"secs") 
+        h = Plots.histogram(whiteNoiseArray,title = "createWhiten() function distribution for T = "*string(N[i])*"s",legend = false,xlabel = "Number Generated",ylabel = "Frequency")
+        Plots.display(h)
+        savefig(h, "C:\\Users\\sarah\\Documents\\1. UNIVERSITY\\University\\EEE4120F\\EEE4120F_Practicals\\Plots\\Noise\\createWhiten"*string(N[i])*"secs") 
         
-        # println("For t = ", N[i], "s \nExecution time of rand() function = ", timeRand, "s \nExecution time of createWhiten() function = ", timeCreateWhiten, "s \nSample size = ", sampleSize)
-        # println()
-        
+        # 1.2.6 Comparing Correlation Function to Statistics Package's Correlation Function
+
         # Correlation of createWhiten() function output against itself
         println("Correlation of createWhiten() function output against itself")
         timeCorr, timeStatsCor = correlationCompare(whiteNoiseArray, whiteNoiseArray)
         
-        
         # Correlation of createWhiten() function output against rand() function output
         println("Correlation of createWhiten() and rand() function outputs")
         timeCorr, timeStatsCor = correlationCompare(whiteNoiseArray, whiteNoise)
-        
-        h = Plots.histogram(whiteNoise,title = "Random Number Distribution from rand() function",legend = false,xlabel = "Number Generated",ylabel = "Frequency")
-        Plots.display(h)
-        h = Plots.histogram(whiteNoiseArray,title = "Random Number Distribution from whiten() function",legend = false,xlabel = "Number Generated",ylabel = "Frequency")
-        Plots.display(h)
     end
-    
-    # 1.2.3 Visual Confirmation of Uniform Distribution
-    h = Plots.histogram(whiteNoise,title = "Random Number Distribution from rand() function",legend = false,xlabel = "Number Generated",ylabel = "Frequency")
-    Plots.display(h)
-    h = Plots.histogram(whiteNoiseArray,title = "Random Number Distribution from whiten() function",legend = false,xlabel = "Number Generated",ylabel = "Frequency")
-    Plots.display(h)
-
-    # 1.2.6 Comparing Correlation Function to Statistics Package's Correlation Function
-    
-    # Correlation of createWhiten() function output against itself
-    #timeCorr, timeStatsCor = correlationCompare(whiteNoiseArray, whiteNoiseArray)
-    # r1 = corr(whiteNoiseArray, whiteNoiseArray)
-    # println("Using corr function: ", r1)
-    # r2 = cor(whiteNoiseArray, whiteNoiseArray)
-    # println("Using Statistics.cor function: ", r2, "\n")
-
-    # # Correlation of createWhiten() function output against rand() function output
-    # #timeCorr, timeStatsCor = correlationCompare(whiteNoiseArray, whiteNoise)
-    # r1 = corr(whiteNoiseArray, whiteNoise)
-    # println("Using corr function: ", r1)
-    # r2 = cor(whiteNoiseArray, whiteNoise)
-    # println("Using Statistics.cor function: ", r2, "\n")
-
+    println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     
     # 1.2.7 Correlation of Shifted Signals
 
-    freq = [100, 1000, 48000];  # range of frequencies to test
+    freq = [50, 1000, 48000];  # range of frequencies to test
     Ns = [100, 1000, 10000];    # range of number of samples
+    shift = [0.25, 0.5, 0.75]
 
+    local sineWave, sineWaveShift
     for i in freq
         for j in Ns
-            sineWave = sinusoid(i,j)
-            sineWaveShift = circshift(sineWave, 10)
-            R = cor(sineWave,sineWaveShift)
-            println("Frequency of ", string(i), "Hz, with ", string(j), " samples")
-            println("Correlation: ", R, "\n")
+            for k in shift
+                shifted = floor(Int, j*k)
+                sineWave = sinusoid(i,j)
+                sineWaveShift = circshift(sineWave, shifted)
+                R = cor(sineWave,sineWaveShift)
+                println("Frequency of ", string(i), "Hz, with ", string(j), " samples, shifted by ", shifted, " samples")
+                println("Correlation: ", R, "\n")
 
-            h = Plots.scatter(sineWave,title = "Sine Wave",legend = false,xlabel = "Time",ylabel = "Amplitude")
-            Plots.display(h)
-            h = Plots.scatter(sineWaveShift,title = "Sine Wave",legend = false,xlabel = "Time",ylabel = "Amplitude")
-            Plots.display(h)
+                h = Plots.scatter(sineWave,title = "Sine Wave",xlabel = "Time",ylabel = "Amplitude", label = "Original Wave", color = "blue")
+                h = Plots.scatter!(sineWaveShift, label = "Shifted Wave", color = "red")
+                Plots.display(h)    
+                savefig(h, "C:\\Users\\sarah\\Documents\\1. UNIVERSITY\\University\\EEE4120F\\EEE4120F_Practicals\\Plots\\Sine\\SineWave"*string(i)*"Hz"*string(j)*"samples"*string(shifted)*"samplesshifted") 
+            end
         end
+        println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     end
-
 end
 
 # 1.2.2 White Noise Generator Script
-function createwhiten(N)
+function createWhiten(N)
     noiseArray = Array{Float64}(undef,N*4800)
     for i in 1:N*4800
         noiseArray[i] = (rand()*2).-1
@@ -113,14 +97,14 @@ function whiteNoiseGeneration(N)
 
     # 1.2.2 White Noise Generator Script
     tick();
-    whiteNoiseArray = createwhiten(N);
+    whiteNoiseArray = createWhiten(N);
     WAV.wavwrite(whiteNoiseArray, "white_noise_sound2.wav", Fs = 4800);
-    timeCreateWhiten = tok();
+    timecreateWhiten = tok();
     
-    #println("Execution time of creatwhiten() function: ", timeCreateWhiten, "s \n")
+    #println("Execution time of createWhiten() function: ", timecreateWhiten, "s \n")
     sampleSize = length(whiteNoiseArray);
 
-    return timeRand , timeCreateWhiten, sampleSize, whiteNoise, whiteNoiseArray
+    return timeRand , timecreateWhiten, sampleSize, whiteNoise, whiteNoiseArray
 end
 
 # 1.2.5 Implementing Pearson's Correlation
