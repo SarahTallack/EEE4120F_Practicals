@@ -1,0 +1,165 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Time = 5
+Execution Time of rand() = 0.012009
+Execution Time of createWhiten() = 0.0070732
+Sample size = 24000
+
+Correlation of createWhiten() function output against itself
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 1.0
+Execution time of corr() function: 0.0002195
+Using Statistics.cor function: 1.0
+Execution time of Statistics.cor() function: 5.49e-5
+
+Correlation of createWhiten() and rand() function outputs
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 0.012828280431300597
+Execution time of corr() function: 0.0001945
+Using Statistics.cor function: 0.012828280431300595
+Execution time of Statistics.cor() function: 0.0003042
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Time = 10
+Execution Time of rand() = 0.0098086
+Execution Time of createWhiten() = 0.033744
+Sample size = 48000
+
+Correlation of createWhiten() function output against itself
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 1.0000000000000002
+Execution time of corr() function: 0.000259
+Using Statistics.cor function: 1.0
+Execution time of Statistics.cor() function: 0.0001255
+
+Correlation of createWhiten() and rand() function outputs
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 0.0018310842359156598
+Execution time of corr() function: 0.0014475
+Using Statistics.cor function: 0.001831084235915661
+Execution time of Statistics.cor() function: 0.0001701
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Time = 50
+Execution Time of rand() = 0.0573456
+Execution Time of createWhiten() = 0.1077991
+Sample size = 240000
+
+Correlation of createWhiten() function output against itself
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 1.0
+Execution time of corr() function: 0.0049793
+Using Statistics.cor function: 1.0
+Execution time of Statistics.cor() function: 0.0014007
+
+Correlation of createWhiten() and rand() function outputs
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: -0.0025168500074527977
+Execution time of corr() function: 0.0123322
+Using Statistics.cor function: -0.002516850007452785
+Execution time of Statistics.cor() function: 0.0007378
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Time = 100
+Execution Time of rand() = 0.067335
+Execution Time of createWhiten() = 0.1169239
+Sample size = 480000
+
+Correlation of createWhiten() function output against itself
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 1.0000000000000002
+Execution time of corr() function: 0.0086144
+Using Statistics.cor function: 1.0
+Execution time of Statistics.cor() function: 0.0011473
+
+Correlation of createWhiten() and rand() function outputs
+Comparing output and time of corr() and Statistics.cor() functions
+Using corr function: 0.0012482351913843664
+Execution time of corr() function: 0.0113418
+Using Statistics.cor function: 0.0012482351913843809
+Execution time of Statistics.cor() function: 0.001279
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Frequency of 50Hz, with 100 samples, shifted by 25 samples
+Correlation: -1.0779064111011733e-17
+
+Frequency of 50Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 50Hz, with 100 samples, shifted by 75 samples
+Correlation: 2.1748356701667703e-18
+
+Frequency of 50Hz, with 1000 samples, shifted by 250 samples
+Correlation: 3.470177713492888e-18
+
+Frequency of 50Hz, with 1000 samples, shifted by 500 samples
+Correlation: -1.0
+
+Frequency of 50Hz, with 1000 samples, shifted by 750 samples
+Correlation: 1.5348196124109907e-17
+
+Frequency of 50Hz, with 10000 samples, shifted by 2500 samples
+Correlation: 1.1762792418693017e-17
+
+Frequency of 50Hz, with 10000 samples, shifted by 5000 samples
+Correlation: -1.0
+
+Frequency of 50Hz, with 10000 samples, shifted by 7500 samples
+Correlation: -5.8342014671946825e-18
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Frequency of 1000Hz, with 100 samples, shifted by 25 samples
+Correlation: 4.6091463143313215e-18
+
+Frequency of 1000Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 1000Hz, with 100 samples, shifted by 75 samples
+Correlation: 1.4970803211070393e-18
+
+Frequency of 1000Hz, with 1000 samples, shifted by 250 samples
+Correlation: -8.01393838327275e-18
+
+Frequency of 1000Hz, with 1000 samples, shifted by 500 samples
+Correlation: -1.0
+
+Frequency of 1000Hz, with 1000 samples, shifted by 750 samples
+Correlation: 6.669861766451932e-19
+
+Frequency of 1000Hz, with 10000 samples, shifted by 2500 samples
+Correlation: -3.5600057254295346e-17
+
+Frequency of 1000Hz, with 10000 samples, shifted by 5000 samples
+Correlation: -1.0
+
+Frequency of 1000Hz, with 10000 samples, shifted by 7500 samples
+Correlation: 2.05842908462401e-17
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Frequency of 48000Hz, with 100 samples, shifted by 25 samples
+Correlation: -3.721331831694895e-18
+
+Frequency of 48000Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 48000Hz, with 100 samples, shifted by 75 samples
+Correlation: 1.1310700166313526e-19
+
+Frequency of 48000Hz, with 1000 samples, shifted by 250 samples
+Correlation: -0.001573927594378809
+
+Frequency of 48000Hz, with 1000 samples, shifted by 500 samples
+Correlation: -0.9999901304280688
+
+Frequency of 48000Hz, with 1000 samples, shifted by 750 samples
+Correlation: 0.00471549957715828
+
+Frequency of 48000Hz, with 10000 samples, shifted by 2500 samples
+Correlation: -0.00015711103827156678
+
+Frequency of 48000Hz, with 10000 samples, shifted by 5000 samples
+Correlation: -0.9999999013039592
+
+Frequency of 48000Hz, with 10000 samples, shifted by 7500 samples
+Correlation: 0.00047127028295971526
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
