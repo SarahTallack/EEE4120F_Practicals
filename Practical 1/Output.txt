@@ -163,3 +163,96 @@ Frequency of 48000Hz, with 10000 samples, shifted by 7500 samples
 Correlation: 0.00047127028295971526
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SINE WAVE EXTRA
+
+Frequency of 1000 Hz, with 100 samples, shifted by 25 samples
+Correlation: 4.6091463143313215e-18
+
+Frequency of 1000 Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 100 samples, shifted by 75 samples
+Correlation: 1.4970803211070393e-18
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 250 samples
+Correlation: -8.01393838327275e-18
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 500 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 750 samples
+Correlation: 6.669861766451932e-19
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 2500 samples
+Correlation: -3.5600057254295346e-17
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 5000 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 7500 samples
+Correlation: 2.05842908462401e-17
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Frequency of 1000 Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 50 samples
+Correlation: 0.9510565162951536
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 50 samples
+Correlation: 0.9995065603657315
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Frequency of 1000 Hz, with 100 samples, shifted by 25 samples
+Correlation: 4.6091463143313215e-18
+
+Frequency of 1000 Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 100 samples, shifted by 75 samples
+Correlation: 1.4970803211070393e-18
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 250 samples
+Correlation: -8.01393838327275e-18
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 500 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 750 samples
+Correlation: 6.669861766451932e-19
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 2500 samples
+Correlation: -3.5600057254295346e-17
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 5000 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 7500 samples
+Correlation: 2.05842908462401e-17
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Frequency of 1000 Hz, with 100 samples, shifted by 10 samples
+Correlation: 0.8090169943749476
+
+Frequency of 1000 Hz, with 100 samples, shifted by 50 samples
+Correlation: -1.0
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 10 samples
+Correlation: 0.9980267284282717
+
+Frequency of 1000 Hz, with 1000 samples, shifted by 50 samples
+Correlation: 0.9510565162951536
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 10 samples
+Correlation: 0.9999802608561377
+
+Frequency of 1000 Hz, with 10000 samples, shifted by 50 samples
+Correlation: 0.9995065603657315
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

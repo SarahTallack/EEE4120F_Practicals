@@ -52,8 +52,8 @@ function main()
     
     # 1.2.7 Correlation of Shifted Signals
 
-    freq = [50, 1000, 48000];  # range of frequencies to test
-    Ns = [100, 1000, 10000];    # range of number of samples
+    freq = [50, 1000, 48000]   # range of frequencies to test
+    Ns = [100, 1000, 10000]    # range of number of samples
     shift = [0.25, 0.5, 0.75]
 
     local sineWave, sineWaveShift
