@@ -236,7 +236,7 @@ int main(void)
 	//			cl_int* errcode_ret);
 
 	//TODO: select the kernel you are running
-
+	cl_kernel kernel = clCreateKernel(program, "matrixMultiplication", &err);
 	//------------------------------------------------------------------------
 	
 	//***Step 8*** create command queue to the target device. This is the queue that the kernels get dispatched too, to get the the desired device.
@@ -251,10 +251,12 @@ int main(void)
 
 	//***Step 9*** create data buffers for memory management between the host and the target device
 	//TODO: set global_size, local_size and num_groups, in order to control the number of work item in each work group
-	
+	size_t global_size = Size*Size*Size; //total number of work items
+	size_t local_size = Size; //Size of each work group
+	cl_int num_groups = global_size/local_size; //number of work groups needed
 	//already got matrixA and matrixB
 	//TODO: initialize the output array
-
+	int output[global_size/local_size]; //output array
    
 
 	
@@ -266,7 +268,10 @@ int main(void)
 	//			cl_int* errcode_ret);
 	
 	//TODO: create matrixA_buffer, matrixB_buffer and output_buffer, with clCreateBuffer()
-
+	matrixA_buffer = clCreateBuffer(context,CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, countA*sizeof(int), &matrixA, &err);
+	matrixB_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, countB*sizeof(int), &matrixB, &err);
+	size_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, sizeof(int), &Size, &err);
+	output_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, global_size*sizeof(int), output, &err);
 
 	//------------------------------------------------------------------------
 
@@ -277,7 +282,10 @@ int main(void)
 	//				const void *arg_value)
 	
 	//TODO: create the arguments for the kernel. Note you can create a local buffer only on the GPU as follows: clSetKernelArg(kernel, argNum, size, NULL);
-
+	clSetKernelArg(kernel, 0, sizeof(cl_mem), &matrixA_buffer);
+	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixB_buffer);
+	clSetKernelArg(kernel, 1, sizeof(cl_mem), &size_buffer);
+	clSetKernelArg(kernel, 2, sizeof(cl_mem), &output_buffer);
 	//------------------------------------------------------------------------
 
 	
