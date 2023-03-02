@@ -22,7 +22,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	//calculation
 	int res = A*B;
 
-	printf("%i wg:%i wi%i",res,workGroupNum,localGroupID);
+	printf("wg:%i wi%i\n",workGroupNum,localGroupID);
 	result[localGroupID] = A*B;	
 	
 
