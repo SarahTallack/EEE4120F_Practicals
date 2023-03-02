@@ -121,7 +121,7 @@ int main(void)
 	 
 	//Initialize Buffers, memory space the allows for communication between the host and the target device
 	//TODO: initialize matrixA_buffer, matrixB_buffer and output_buffer
-
+	cl_mem matrixA_buffer, matrixB_buffer, size_buffer, output_buffer;
 	//***step 1*** Get the platform you want to use
 	//cl_int clGetPlatformIDs(cl_uint num_entries,
 	//				cl_platform_id *platforms, 
