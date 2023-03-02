@@ -6,6 +6,8 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int workItemNum = get_global_id(0); //Work item ID
 	int workGroupNum = get_group_id(0); //Work group ID
 	int localGroupID = get_local_id(0); //Work items ID within each work group
+
+	printf("wg:%i wi%i\n",workGroupNum,localGroupID);
 	
 	//memory buffers
 	int size = *size;
@@ -22,7 +24,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	//calculation
 	int res = A*B;
 
-	printf("wg:%i wi%i\n",workGroupNum,localGroupID);
+	
 	result[localGroupID] = A*B;	
 	
 
