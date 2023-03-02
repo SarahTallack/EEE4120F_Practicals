@@ -256,7 +256,7 @@ int main(void)
 	cl_int num_groups = global_size/local_size; //number of work groups needed
 	//already got matrixA and matrixB
 	//TODO: initialize the output array
-	int output[global_size/local_size]; //output array
+	int output[global_size]; //output array
    
 
 	
