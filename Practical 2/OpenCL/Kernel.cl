@@ -13,12 +13,19 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int size = *size;
 
 	//determine index to use for 1D matrix
-	local int indexA = floor(workGroupNum/size) + localGroupID;
+	local int indexA = (workGroupNum/size) + localGroupID;
 	local int indexB = localGroupID*size + workGroupNum%size;
 
-	int A = *matrixA[indexA];
-	int B = *matrixB[indexB];
+	//printf("wg:%i wi:%i",indexA,indexB);
+
+	int matA[] = *matrixA;
+	int matB[] = *matrixB;
+
+	int A = *matA[indexA];
+	int B = *matB[indexB];
+	printf("A:%i B:%i",A,B);
 	
+	/*
 	int result[size];
 
 	//calculation
@@ -40,7 +47,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	
 		printf(groupValue);
 	}
-	output[workItemNum] = result[localGroupID];
+	output[workItemNum] = result[localGroupID];*/
 	
 }
 
