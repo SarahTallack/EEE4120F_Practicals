@@ -36,12 +36,11 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	barrier(CLK_LOCAL_MEM_FENCE);
 	
 	int groupValue = 0;
-	if (localGroupID == 0){/*
+	if (localGroupID == 0){
 		for (int i = 0;i<size;i++)
 		{
 			groupValue += result[i];
 		}
-	*/
 		printf("%i\n",groupValue);
 	}
 	//output[workItemNum] = result[localGroupID];
