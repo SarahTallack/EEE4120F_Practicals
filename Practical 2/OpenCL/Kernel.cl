@@ -41,9 +41,10 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 		{
 			groupValue += result[i];
 		}
-		printf("%i\n",groupValue);
+		//printf("%i\n",groupValue);
+		output[workGroupNum] = groupValue;
 	}
-	//output[workItemNum] = result[localGroupID];
+	
 	
 }
 
