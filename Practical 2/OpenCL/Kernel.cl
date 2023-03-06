@@ -20,15 +20,15 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 
 	int A = matrixA[indexA];
 	int B = matrixB[indexB];
-	printf("A:%i B:%i",A,B);
+	//printf("A:%i B:%i",A,B);
 	
-	/*
+	
 	int result[size];
 
 	//calculation
 	int res = A*B;
-
-	
+	printf("%i\n",res);
+	/*
 	result[localGroupID] = A*B;	
 	
 
