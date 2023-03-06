@@ -29,12 +29,12 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int res = A*B;
 	//printf("%i\n",res);
 	
-	result[localGroupID] = A*B;	
+	result[localGroupID] = res;	
 	
 
 	//barrier that stops all work items here until all work items in the work group have executed this function
 	barrier(CLK_LOCAL_MEM_FENCE);
-	
+	/*
 	int groupValue = 0;
 	if (localGroupID == 0){
 		for (int i = 0;i<size;i++)
@@ -44,7 +44,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	
 		printf(groupValue);
 	}
-	output[workItemNum] = result[localGroupID];
+	output[workItemNum] = result[localGroupID];*/
 	
 }
 
