@@ -23,7 +23,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	//printf("A:%i B:%i",A,B);
 	
 	
-	local int result[size];
+	local int result[3];
 	/*
 	//calculation
 	int res = A*B;
