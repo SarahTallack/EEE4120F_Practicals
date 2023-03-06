@@ -27,8 +27,8 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	
 	//calculation
 	int res = A*B;
-	printf("%i\n",res);
-	/*
+	//printf("%i\n",res);
+	
 	result[localGroupID] = A*B;	
 	
 
@@ -44,7 +44,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	
 		printf(groupValue);
 	}
-	output[workItemNum] = result[localGroupID];*/
+	output[workItemNum] = result[localGroupID];
 	
 }
 
