@@ -1,7 +1,7 @@
 
 //TODO: set your arguments for the kernel. Note that you have to indicate if the argument is global or local. Global arguments are accessable by both host and this target device. While local can only be accessed by the device running this kernel. eg __global int* inputMatrixA, __local int* groupMemory
 
-__kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB, __global int*size, __global int* output){
+__kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB, __global int*Size, __global int* output){
 	//work item and work groups numbers
 	int workItemNum = get_global_id(0); //Work item ID
 	int workGroupNum = get_group_id(0); //Work group ID
@@ -10,7 +10,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	printf("wg:%i wi%i\n",workGroupNum,localGroupID);
 	
 	//memory buffers
-	int size = *size;
+	int size = *Size;
 
 	//determine index to use for 1D matrix
 	local int indexA = (workGroupNum/size) + localGroupID;
