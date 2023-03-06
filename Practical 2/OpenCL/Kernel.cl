@@ -11,12 +11,12 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	
 	//memory buffers
 	int size = *Size;
-/*
-	//determine index to use for 1D matrix
-	local int indexA = workGroupNum/size + localGroupID;
-	local int indexB = localGroupID*size + workGroupNum%size;
 
-	//printf("wg:%i wi:%i\n",indexA,indexB);
+	//determine index to use for 1D matrix
+	int indexA = workGroupNum/size + localGroupID;
+	int indexB = localGroupID*size + workGroupNum%size;
+
+	printf("wg:%i wi:%i\n",indexA,indexB);
 /*
 	int matA[] = *matrixA;
 	int matB[] = *matrixB;
