@@ -17,7 +17,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int indexB = localGroupID*size + workGroupNum%size;
 
 	printf("wg:%i wi:%i\n",indexA,indexB);
-/*
+
 	int matA[] = *matrixA;
 	int matB[] = *matrixB;
 /*
