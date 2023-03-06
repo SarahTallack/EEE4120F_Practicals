@@ -7,16 +7,16 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int workGroupNum = get_group_id(0); //Work group ID
 	int localGroupID = get_local_id(0); //Work items ID within each work group
 
-	printf("wg:%i wi%i\n",workGroupNum,localGroupID);
-	/*
+	//printf("wg:%i wi%i\n",workGroupNum,localGroupID);
+	
 	//memory buffers
 	int size = *Size;
-
+/*
 	//determine index to use for 1D matrix
 	local int indexA = workGroupNum/size + localGroupID;
 	local int indexB = localGroupID*size + workGroupNum%size;
 
-	//printf("wg:%i wi:%i",indexA,indexB);
+	//printf("wg:%i wi:%i\n",indexA,indexB);
 /*
 	int matA[] = *matrixA;
 	int matB[] = *matrixB;
