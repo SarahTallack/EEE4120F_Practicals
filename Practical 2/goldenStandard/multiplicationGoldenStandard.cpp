@@ -110,7 +110,7 @@ int main(void){
 		for (int j = 0;j<Size;j++) {
 			output[i*Size+j] = 0;
 			for (int k = 0; k<Size; k++) {
-				output[i*Size+j] = output[i*Size+k]* output[j*Size+k];
+				output[i*Size+j] += output[i*Size+k]*output[j*Size+k];
 			}						
 		}
 	}
