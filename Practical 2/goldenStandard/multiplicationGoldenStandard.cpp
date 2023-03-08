@@ -106,11 +106,11 @@ int main(void){
 	int output[countA];
 	
 	//TODO: code your golden standard matrix multiplication here
-	for (int i = 0; i<size; i++) {
-		for (int j = 0;j<size;j++) {
-			output[i*size+j] = 0;
-			for (int k = 0; k<size; k++) {
-				output[i*size+j] = output[i*size+k]* output[j*size+k];
+	for (int i = 0; i<Size; i++) {
+		for (int j = 0;j<Size;j++) {
+			output[i*Size+j] = 0;
+			for (int k = 0; k<Size; k++) {
+				output[i*Size+j] = output[i*Size+k]* output[j*Size+k];
 			}						
 		}
 	}
