@@ -106,11 +106,11 @@ int main(void){
 	int output[countA];
 	
 	//TODO: code your golden standard matrix multiplication here
-	for (int i = 0; i<Size; i++) {
-		for (int j = 0;j<Size;j++) {
-			output[i*Size+j] = 0;
-			for (int k = 0; k<Size; k++) {
-				output[i*Size+j] += output[i*Size+k]*output[j*Size+k];
+	for (int i = 0; i < Size; i++) {
+		for (int j = 0; j < Size; j++) {
+			output[i*Size + j] = 0;
+			for (int k = 0; k < Size; k++) {
+				output[i*Size + j] += matrixA[i*Size + k] * matrixB[j + k*Size];
 			}						
 		}
 	}
