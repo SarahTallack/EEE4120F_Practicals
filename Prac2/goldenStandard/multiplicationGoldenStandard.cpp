@@ -103,18 +103,28 @@ int main(void){
 	
 	
 	
-	int output[countA];
+	int outputAB[countA];
 	
 	//TODO: code your golden standard matrix multiplication here
 	for (int i = 0; i < Size; i++) {
 		for (int j = 0; j < Size; j++) {
-			output[i*Size + j] = 0;
+			outputAB[i*Size + j] = 0;
 			for (int k = 0; k < Size; k++) {
-				output[i*Size + j] += matrixA[i*Size + k] * matrixB[j + k*Size];
+				outputAB[i*Size + j] += matrixA[i*Size + k] * matrixB[j + k*Size];
 			}						
 		}
 	}
-	
+
+	int output[countA];
+
+	for (int i = 0; i < Size; i++) {
+		for (int j = 0; j < Size; j++) {
+			output[i*Size + j] = 0;
+			for (int k = 0; k < Size; k++) {
+				output[i*Size + j] += outputAB[i*Size + k] * matrixA[j + k*Size];
+			}						
+		}
+	}
 	
 	//This if statement will display the matrix in output	
 	if(displayMatrices){
