@@ -51,14 +51,14 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	barrier(CLK_GLOBAL_MEM_FENCE);
 	printf("matrixC TEST val: %i \n wg:%i wi:%i\n",matrixC[workGroupNum],workGroupNum,workItemNum);
 	//determine index to use for 1D matrix
-	//indexC = workGroupNum/size + localGroupID;
-	//indexA = localGroupID*size + workGroupNum%size;
+	indexC = workGroupNum/size + localGroupID;
+	indexA = localGroupID*size + workGroupNum%size;
 
 	//printf("wg:%i wi:%i\n",indexA,indexB);
 
-	C = matrixC[indexA];
-	A = matrixA[indexB];
-	printf("C:%i A:%i \nwg:%i wi:%i localID:%i \n",C,A,workGroupNum,workItemNum,localGroupID);
+	C = matrixC[indexC];
+	A = matrixA[indexA];
+	printf("C:%i A:%i \nwg:%i wi:%i localID:%i \n indexC:%i \n\n",C,A,workGroupNum,workItemNum,localGroupID, indexC);
 	//printf("wg:%i wi:%i\n",workGroupNum,workItemNum);
 	
 	//local int result[100];
