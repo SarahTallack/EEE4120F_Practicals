@@ -46,7 +46,16 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	}
 	
 	barrier(CLK_GLOBAL_MEM_FENCE);
-
+	
+	for(int j=0; j<(size*size); j++) {
+		printf("%i \t " ,matrixC[j]);
+		if(j%size == (size-1)){
+			printf("\n");
+		}
+	}
+	
+	barrier(CLK_GLOBAL_MEM_FENCE);
+	
 	//determine index to use for 1D matrix
 	int indexC = workGroupNum/size + localGroupID;
 	indexA = localGroupID*size + workGroupNum%size;
