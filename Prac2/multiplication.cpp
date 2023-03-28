@@ -286,6 +286,11 @@ int main(void)
 	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixB_buffer);
 	clSetKernelArg(kernel, 2, sizeof(cl_mem), &size_buffer);
 	clSetKernelArg(kernel, 3, sizeof(cl_mem), &output_buffer);
+	
+	//NULL is used for the buffer pointer as there
+	//is no memory block on the host computer
+	clSetKernelArg(kernel, ArgumentNumber, MemoryBlockSize, NULL);
+
 	//------------------------------------------------------------------------
 
 	
@@ -321,23 +326,23 @@ int main(void)
 	clFinish(queue);
 
 
-	//Sarah tries stuff
-	//Store the values of the output array into the matrixB buffer
-	matrixB_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, countB*sizeof(int), &output, &err);
+// 	//Sarah tries stuff
+// 	//Store the values of the output array into the matrixB buffer
+// 	matrixB_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, countB*sizeof(int), &output, &err);
 
-	//Set kernel arguments so that operation can be A*B*A
-	clSetKernelArg(kernel, 0, sizeof(cl_mem), &matrixB_buffer);
-	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixA_buffer);
+// 	//Set kernel arguments so that operation can be A*B*A
+// 	clSetKernelArg(kernel, 0, sizeof(cl_mem), &matrixB_buffer);
+// 	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixA_buffer);
 
-	//enqueue kernel, deploys the kernel
-	cl_int err5 = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, 0, NULL, NULL); 
-	printf("\nKernel check: %i \n",err5);
+// 	//enqueue kernel, deploys the kernel
+// 	cl_int err5 = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, 0, NULL, NULL); 
+// 	printf("\nKernel check: %i \n",err5);
 
-	//***Step 12*** Allows the host to read from the buffer object 
-	err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
+// 	//***Step 12*** Allows the host to read from the buffer object 
+// 	err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
 	
-	//This command stops the program here until everything in the queue has been run
-	clFinish(queue);
+// 	//This command stops the program here until everything in the queue has been run
+// 	clFinish(queue);
 	
 	//***Step 13*** Check that the host was able to retrieve the output data from the output buffer
 	
