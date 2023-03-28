@@ -60,7 +60,7 @@ void createRandomSquareMatrix(int Size, int* squareMatrix, bool displayMatrices)
 int main(void)
 {
 
-	clock_t start, end;  //Timers
+	clock_t start_prog, end_prog, start_multAB, end_multAB, start_multABA, end_multABA;  //Timers
 
 
 	//New code for prac 2.2
@@ -259,7 +259,7 @@ int main(void)
 	int output[num_groups]; //output array
    
 
-	start = clock(); //start running clock
+	start_prog = clock(); //start running clock
 	
 	//Buffer (memory block) that both the host and target device can access 
 	//cl_mem clCreateBuffer(cl_context context,
@@ -287,6 +287,10 @@ int main(void)
 	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixB_buffer);
 	clSetKernelArg(kernel, 2, sizeof(cl_mem), &size_buffer);
 	clSetKernelArg(kernel, 3, sizeof(cl_mem), &output_buffer);
+	
+	//NULL is used for the buffer pointer as there
+	//is no memory block on the host computer
+	clSetKernelArg(kernel, 4, countA*sizeof(int), NULL);
 	//------------------------------------------------------------------------
 
 	
@@ -304,7 +308,7 @@ int main(void)
 	//					const cl_event *event_wait_list, 
 	//					cl_event *event)
 	
-	
+	start_multAB = clock();
 	
 	cl_int err4 = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, 0, NULL, NULL); 
 	
@@ -320,7 +324,7 @@ int main(void)
 	
 	//This command stops the program here until everything in the queue has been run
 	clFinish(queue);
-
+	end_multAB = clock();
 	
 	
  	//Sarah tries stuff
@@ -331,19 +335,24 @@ int main(void)
  	clSetKernelArg(kernel, 0, sizeof(cl_mem), &matrixB_buffer);
  	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixA_buffer);
 
+	
+		
+	start_multABA = clock();
  	//enqueue kernel, deploys the kernel
  	cl_int err5 = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &global_size, &local_size, 0, NULL, NULL); 
  	printf("\nKernel check: %i \n",err5);
 
  	//***Step 12*** Allows the host to read from the buffer object 
- 	err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
+ 	
 	
  	//This command stops the program here until everything in the queue has been run
  	clFinish(queue);
-	
-	
-	end = clock();
-	printf ("Run Time: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
+	end_multABA = clock();
+	err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
+	end_prog = clock();
+	printf ("Run Time: %0.8f sec \n",((float) end_prog - start_prog)/CLOCKS_PER_SEC);
+	printf ("Run Time: %0.8f sec \n",((float) end_multAB - start_multAB)/CLOCKS_PER_SEC);
+	printf ("Run Time: %0.8f sec \n",((float) end_multABA - start_multABA)/CLOCKS_PER_SEC);
 	//***Step 13*** Check that the host was able to retrieve the output data from the output buffer
 	
 	if(displayMatrices){
