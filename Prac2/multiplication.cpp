@@ -343,7 +343,7 @@ int main(void)
 	
 	
 	end = clock();
-	printf ("Run Time first: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
+	printf ("Run Time: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
 	//***Step 13*** Check that the host was able to retrieve the output data from the output buffer
 	
 	if(displayMatrices){
