@@ -65,7 +65,7 @@ int main(void)
 
 	//New code for prac 2.2
 	bool displayMatrices = false;
-	int Size = 110;
+	int Size = 116;
 	int countA = Size*Size;
 	int matrixA[countA];
 	createKnownSquareMatrix(Size,matrixA, false);
