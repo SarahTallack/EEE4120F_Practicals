@@ -7,9 +7,8 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int workGroupNum = get_group_id(0); //Work group ID
 	int localGroupID = get_local_id(0); //Work items ID within each work group
 
-	int indexA, indexB, indexC;
-	int A, B, C;
-	//printf("wg:%i wi%i\n",workGroupNum,localGroupID);
+	int indexA, indexB;
+	int A, B;
 	
 	//memory buffers
 	int size = *Size;
@@ -18,18 +17,13 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	indexA = workGroupNum/size + localGroupID;
 	indexB = localGroupID*size + workGroupNum%size;
 
-	//printf("wg:%i wi:%i\n",indexA,indexB);
-
 	A = matrixA[indexA];
-	B = matrixB[indexB];
-	//printf("A:%i B:%i",A,B);
-	
+	B = matrixB[indexB];	
 	
 	local int result[100];
 	
 	//calculation
 	int res = A*B;
-	//printf("%i\n",res);
 	
 	result[localGroupID] = res;	
 	
@@ -44,53 +38,9 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 			groupValue += result[i];
 		}
 		//printf("%i\n",groupValue);
-		matrixC[workGroupNum] = groupValue;
+		output[workGroupNum] = groupValue;
 		
 	}
-	printf("matrixC val: %i \n",matrixC[workGroupNum]);
-	barrier(CLK_GLOBAL_MEM_FENCE);
-	printf("matrixC TEST val: %i \n wg:%i wi:%i\n",matrixC[workGroupNum],workGroupNum,workItemNum);
-	//determine index to use for 1D matrix
-	indexC = workGroupNum/size + localGroupID;
-	indexA = localGroupID*size + workGroupNum%size;
-
-	//printf("wg:%i wi:%i\n",indexA,indexB);
-
-	C = matrixC[indexC];
-	A = matrixA[indexA];
-	printf("C:%i A:%i \nwg:%i wi:%i localID:%i \n indexC:%i \n\n",C,A,workGroupNum,workItemNum,localGroupID, indexC);
-	//printf("wg:%i wi:%i\n",workGroupNum,workItemNum);
-	printf("C:%i \n", matrixC[0]);
-	printf("C:%i \n", matrixC[1]);
-	printf("C:%i \n", matrixC[2]);
-	printf("C:%i \n", matrixC[3]);
-	printf("C:%i \n", matrixC[4]);
-	printf("C:%i \n", matrixC[5]);
-	printf("C:%i \n", matrixC[6]);
-	printf("C:%i \n", matrixC[7]);
-	printf("C:%i \n", matrixC[8]);
-	//local int result[100];
-	
-	//calculation
-	res = C*A;
-	//printf("%i\n",res);
-	
-	result[localGroupID] = res;	
-	
-
-	//barrier that stops all work items here until all work items in the work group have executed this function
-	barrier(CLK_LOCAL_MEM_FENCE);
-
-	groupValue = 0;
-	if (localGroupID == 0){
-		for (int i = 0;i<size;i++)
-		{
-			groupValue += result[i];
-		}
-		//printf("%i\n",groupValue);
-		output[workGroupNum] = groupValue;
-	}
-	
 }
 
 
