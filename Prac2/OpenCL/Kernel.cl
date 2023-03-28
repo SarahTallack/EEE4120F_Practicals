@@ -60,7 +60,15 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	A = matrixA[indexA];
 	printf("C:%i A:%i \nwg:%i wi:%i localID:%i \n indexC:%i \n\n",C,A,workGroupNum,workItemNum,localGroupID, indexC);
 	//printf("wg:%i wi:%i\n",workGroupNum,workItemNum);
-	
+	printf("C:%i \n", matrixC[0]);
+	printf("C:%i \n", matrixC[1]);
+	printf("C:%i \n", matrixC[2]);
+	printf("C:%i \n", matrixC[3]);
+	printf("C:%i \n", matrixC[4]);
+	printf("C:%i \n", matrixC[5]);
+	printf("C:%i \n", matrixC[6]);
+	printf("C:%i \n", matrixC[7]);
+	printf("C:%i \n", matrixC[8]);
 	//local int result[100];
 	
 	//calculation
