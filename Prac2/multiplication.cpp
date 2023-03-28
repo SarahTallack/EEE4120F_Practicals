@@ -259,6 +259,7 @@ int main(void)
 	int output[num_groups]; //output array
    
 
+	start = clock(); //start running clock
 	
 	//Buffer (memory block) that both the host and target device can access 
 	//cl_mem clCreateBuffer(cl_context context,
@@ -320,7 +321,8 @@ int main(void)
 	//This command stops the program here until everything in the queue has been run
 	clFinish(queue);
 
-
+	
+	
  	//Sarah tries stuff
  	//Store the values of the output array into the matrixB buffer
  	matrixB_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_COPY_HOST_PTR, countB*sizeof(int), &output, &err);
@@ -339,6 +341,9 @@ int main(void)
  	//This command stops the program here until everything in the queue has been run
  	clFinish(queue);
 	
+	
+	end = clock();
+	printf ("Run Time first: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
 	//***Step 13*** Check that the host was able to retrieve the output data from the output buffer
 	
 	if(displayMatrices){
