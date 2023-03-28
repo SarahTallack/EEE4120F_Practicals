@@ -20,8 +20,6 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	A = matrixA[indexA];
 	B = matrixB[indexB];	
 	
-	local int result[100];
-	
 	//calculation
 	int res = A*B;
 	
