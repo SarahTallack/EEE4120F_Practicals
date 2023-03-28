@@ -64,7 +64,7 @@ int main(void)
 
 
 	//New code for prac 2.2
-	bool displayMatrices = true;
+	bool displayMatrices = false;
 	int Size = 32;
 	int countA = Size*Size;
 	int matrixA[countA];
