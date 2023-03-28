@@ -317,15 +317,13 @@ int main(void)
 	printf("\nKernel check: %i \n",err4);
 
 	//------------------------------------------------------------------------
-
-	//***Step 12*** Allows the host to read from the buffer object 
-	err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
-	
 	
 	//This command stops the program here until everything in the queue has been run
 	clFinish(queue);
 	end_multAB = clock();
 	
+	//***Step 12*** Allows the host to read from the buffer object 
+	err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
 	
  	//Sarah tries stuff
  	//Store the values of the output array into the matrixB buffer
