@@ -286,11 +286,6 @@ int main(void)
 	clSetKernelArg(kernel, 1, sizeof(cl_mem), &matrixB_buffer);
 	clSetKernelArg(kernel, 2, sizeof(cl_mem), &size_buffer);
 	clSetKernelArg(kernel, 3, sizeof(cl_mem), &output_buffer);
-	
-	//NULL is used for the buffer pointer as there
-	//is no memory block on the host computer
-	clSetKernelArg(kernel, 4, countA*sizeof(int), NULL);
-
 	//------------------------------------------------------------------------
 
 	
