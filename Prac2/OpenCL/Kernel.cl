@@ -45,7 +45,7 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 		matrixC[workGroupNum] = groupValue;
 	}
 	
-	barrier(CLK_LOCAL_MEM_FENCE);
+	barrier(CLK_GLOBAL_MEM_FENCE);
 
 	//determine index to use for 1D matrix
 	int indexC = workGroupNum/size + localGroupID;
