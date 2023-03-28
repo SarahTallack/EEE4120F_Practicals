@@ -45,9 +45,9 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 		}
 		//printf("%i\n",groupValue);
 		matrixC[workGroupNum] = groupValue;
-		printf("matrixC val: %i \n",matrixC[workGroupNum]);
+		
 	}
-	
+	printf("matrixC val: %i \n",matrixC[workGroupNum]);
 	barrier(CLK_GLOBAL_MEM_FENCE);
 	
 	//determine index to use for 1D matrix
