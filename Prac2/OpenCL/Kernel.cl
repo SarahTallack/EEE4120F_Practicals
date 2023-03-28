@@ -7,19 +7,21 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 	int workGroupNum = get_group_id(0); //Work group ID
 	int localGroupID = get_local_id(0); //Work items ID within each work group
 
+	int indexA, indexB, indexC;
+	int A, B, C;
 	//printf("wg:%i wi%i\n",workGroupNum,localGroupID);
 	
 	//memory buffers
 	int size = *Size;
 
 	//determine index to use for 1D matrix
-	int indexA = workGroupNum/size + localGroupID;
-	int indexB = localGroupID*size + workGroupNum%size;
+	indexA = workGroupNum/size + localGroupID;
+	indexB = localGroupID*size + workGroupNum%size;
 
 	//printf("wg:%i wi:%i\n",indexA,indexB);
 
-	int A = matrixA[indexA];
-	int B = matrixB[indexB];
+	A = matrixA[indexA];
+	B = matrixB[indexB];
 	//printf("A:%i B:%i",A,B);
 	
 	
@@ -43,28 +45,20 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 		}
 		//printf("%i\n",groupValue);
 		matrixC[workGroupNum] = groupValue;
-	}
-	
-	barrier(CLK_GLOBAL_MEM_FENCE);
-	
-	for(int j=0; j<(size*size); j++) {
-		printf("%i \t " ,matrixC[j]);
-		if(j%size == (size-1)){
-			printf("\n");
-		}
+		printf("matrixC val: %i",matrixC[workGroupNum]);
 	}
 	
 	barrier(CLK_GLOBAL_MEM_FENCE);
 	
 	//determine index to use for 1D matrix
-	int indexC = workGroupNum/size + localGroupID;
+	indexC = workGroupNum/size + localGroupID;
 	indexA = localGroupID*size + workGroupNum%size;
 
 	//printf("wg:%i wi:%i\n",indexA,indexB);
 
-	int C = matrixC[indexC];
+	C = matrixC[indexC];
 	A = matrixA[indexA];
-	//printf("A:%i B:%i",A,B);
+	printf("C:%i A:%i",C,A);
 	
 	
 	//local int result[100];
