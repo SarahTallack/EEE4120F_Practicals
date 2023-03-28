@@ -102,11 +102,11 @@ int main(void){
 	cout<<"Matrix 2 pointer: "<<matrixB<<"\n";
 	
 	
-	
+	start = clock(); //start running clock
+
 	int outputAB[countA];
-	
-	//TODO: code your golden standard matrix multiplication here
-	for (int i = 0; i < Size; i++) {
+
+	for (int i = 0; i < Size; i++) {//multiplies AB
 		for (int j = 0; j < Size; j++) {
 			outputAB[i*Size + j] = 0;
 			for (int k = 0; k < Size; k++) {
@@ -117,7 +117,7 @@ int main(void){
 
 	int output[countA];
 
-	for (int i = 0; i < Size; i++) {
+	for (int i = 0; i < Size; i++) {//mutiplies the above matrix by A again
 		for (int j = 0; j < Size; j++) {
 			output[i*Size + j] = 0;
 			for (int k = 0; k < Size; k++) {
@@ -125,6 +125,9 @@ int main(void){
 			}						
 		}
 	}
+
+	end = clock();//stop running clock
+	printf ("Run Time: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
 	
 	//This if statement will display the matrix in output	
 	if(displayMatrices){
