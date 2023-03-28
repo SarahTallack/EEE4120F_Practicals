@@ -58,8 +58,8 @@ __kernel void matrixMultiplication(__global int* matrixA, __global int* matrixB,
 
 	C = matrixC[indexC];
 	A = matrixA[indexA];
-	printf("C:%i A:%i \n",C,A);
-	printf("wg:%i wi:%i\n",workGroupNum,workItemNum);
+	printf("C:%i A:%i \nwg:%i wi:%i\n",C,A,workGroupNum,workItemNum);
+	//printf("wg:%i wi:%i\n",workGroupNum,workItemNum);
 	
 	//local int result[100];
 	
