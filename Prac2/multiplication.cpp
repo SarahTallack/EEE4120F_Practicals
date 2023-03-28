@@ -289,7 +289,7 @@ int main(void)
 	
 	//NULL is used for the buffer pointer as there
 	//is no memory block on the host computer
-	clSetKernelArg(kernel, ArgumentNumber, MemoryBlockSize, NULL);
+	clSetKernelArg(kernel, 4, countA*sizeof(int), NULL);
 
 	//------------------------------------------------------------------------
 
