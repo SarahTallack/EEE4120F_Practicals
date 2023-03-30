@@ -59,9 +59,9 @@ void createRandomSquareMatrix(int Size, int* squareMatrix, bool displayMatrices)
 
 int main(void)
 {
-	int N[7] = {3, 8, 12, 16, 32, 64, 110};
-	for (int i = 0; i < 7; i++) {
-		clock_t start_prog, end_prog, start_multAB, end_multAB, start_multABA, end_multABA;  //Timers
+	int N[10] = {3, 8, 12, 16, 24, 32, 48, 64, 88, 110};
+	for (int i = 0; i < 10; i++) {
+		clock_t start, end, start_prog, end_prog, start_multAB, end_multAB, start_multABA, end_multABA;  //Timers
 		
 
 		//New code for prac 2.2
@@ -118,7 +118,7 @@ int main(void)
 		//cl_command_queue queue; step 8
 		
 		//------------------------------------------------------------------------
-		
+		start = clock()
 		
 		//Initialize Buffers, memory space the allows for communication between the host and the target device
 		//TODO: initialize matrixA_buffer, matrixB_buffer and output_buffer
@@ -349,7 +349,9 @@ int main(void)
 		end_multABA = clock();
 		err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
 		end_prog = clock();
+		end = clock()
 		printf("Size of matrices: %i * %i \n", Size, Size);
+		printf ("Run Time: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
 		printf ("Run Time total: %0.8f sec \n",((float) end_prog - start_prog)/CLOCKS_PER_SEC);
 		printf ("Run Time mult AB: %0.8f sec \n",((float) end_multAB - start_multAB)/CLOCKS_PER_SEC);
 		printf ("Run Time mult AB*A: %0.8f sec \n",((float) end_multABA - start_multABA)/CLOCKS_PER_SEC);
