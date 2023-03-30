@@ -118,7 +118,7 @@ int main(void)
 		//cl_command_queue queue; step 8
 		
 		//------------------------------------------------------------------------
-		start = clock()
+		start = clock();
 		
 		//Initialize Buffers, memory space the allows for communication between the host and the target device
 		//TODO: initialize matrixA_buffer, matrixB_buffer and output_buffer
@@ -349,7 +349,7 @@ int main(void)
 		end_multABA = clock();
 		err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
 		end_prog = clock();
-		end = clock()
+		end = clock();
 		printf("Size of matrices: %i * %i \n", Size, Size);
 		printf ("Run Time: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
 		printf ("Run Time total: %0.8f sec \n",((float) end_prog - start_prog)/CLOCKS_PER_SEC);
