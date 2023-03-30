@@ -129,7 +129,9 @@ int main(void){
 		}
 
 		end = clock();//stop running clock
+		printf("Size of matrices: %i * %i \n", Size, Size);
 		printf ("Run Time: %0.8f sec \n",((float) end - start)/CLOCKS_PER_SEC);
+		printf("--------------------------------------------------\n");
 		
 		//This if statement will display the matrix in output	
 		if(displayMatrices){
