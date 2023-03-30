@@ -349,11 +349,11 @@ int main(void)
 		end_multABA = clock();
 		err = clEnqueueReadBuffer(queue, output_buffer, CL_TRUE, 0, sizeof(output), output, 0, NULL, NULL);
 		end_prog = clock();
-		printf("Size of matrices: %i * %i \n", Size, Size)
+		printf("Size of matrices: %i * %i \n", Size, Size);
 		printf ("Run Time total: %0.8f sec \n",((float) end_prog - start_prog)/CLOCKS_PER_SEC);
 		printf ("Run Time mult AB: %0.8f sec \n",((float) end_multAB - start_multAB)/CLOCKS_PER_SEC);
 		printf ("Run Time mult AB*A: %0.8f sec \n",((float) end_multABA - start_multABA)/CLOCKS_PER_SEC);
-		printf("--------------------------------------------------\n")
+		printf("--------------------------------------------------\n");
 		//***Step 13*** Check that the host was able to retrieve the output data from the output buffer
 		
 		if(displayMatrices){
