@@ -56,7 +56,7 @@ int main(void){
 
 	int N[7] = {3, 8, 12, 16, 32, 64, 110};
 	for (int i = 0; i < 7; i++) {
-
+		clock_t start, end; //Timers 
 
 		//New code for prac 2.2
 		bool displayMatrices = false;
