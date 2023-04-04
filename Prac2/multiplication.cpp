@@ -376,6 +376,7 @@ int main(void)
 		clReleaseMemObject(output_buffer);
 		clReleaseMemObject(matrixA_buffer);
 		clReleaseMemObject(matrixB_buffer);
+		clReleaseMemObject(size_buffer);
 		clReleaseCommandQueue(queue);
 		clReleaseProgram(program);
 		clReleaseContext(context);
