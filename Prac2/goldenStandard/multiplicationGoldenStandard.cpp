@@ -60,7 +60,7 @@ int main(void){
 		clock_t start, end; //Timers 
 
 		//New code for prac 2.2
-		bool displayMatrices = false;
+		bool displayMatrices = true;
 		int Size = N[i];
 		int countA = Size*Size;
 		int matrixA[countA];
