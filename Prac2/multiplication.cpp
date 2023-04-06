@@ -69,7 +69,7 @@ int main(void)
 		int Size = N[i];
 		int countA = Size*Size;
 		int matrixA[countA];
-		createKnownSquareMatrix(Size,matrixA, false);
+		createRandomSquareMatrix(Size,matrixA, false);
 		if(displayMatrices){
 			for(int i = 0; i<Size; i++){
 				for(int j = 0; j<Size; j++){
@@ -90,7 +90,7 @@ int main(void)
 		
 		int countB = Size*Size;
 		int matrixB[countB];
-		createKnownSquareMatrix(Size, matrixB, false);
+		createRandomSquareMatrix(Size, matrixB, false);
 		for(int g = 0; g<countB; g++){
 			matrixB[g] = 2*matrixB[g];
 		}
