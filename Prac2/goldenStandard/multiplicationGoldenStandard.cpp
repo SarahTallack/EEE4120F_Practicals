@@ -54,8 +54,9 @@ void createRandomSquareMatrix(int Size, int* squareMatrix, bool displayMatrices)
 
 int main(void){
 
-	int N[10] = {3, 8, 12, 16, 24, 32, 48, 64, 88, 110};
-	for (int i = 0; i < 10; i++) {
+	//int N[10] = {3, 8, 12, 16, 24, 32, 48, 64, 88, 110};
+	int N[3] = {3, 8, 12};
+	for (int i = 0; i < 3; i++) {
 		clock_t start, end; //Timers 
 
 		//New code for prac 2.2
