@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="977791666fs"></ZoomStartTime>
-      <ZoomEndTime time="1004441667fs"></ZoomEndTime>
-      <Cursor1Time time="998492000fs"></Cursor1Time>
+      <ZoomStartTime time="976055945fs"></ZoomStartTime>
+      <ZoomEndTime time="1004788812fs"></ZoomEndTime>
+      <Cursor1Time time="1000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+      <ValueColumnWidth column_width="115"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wvobject fp_name="/testBench/clk" type="logic">
@@ -37,8 +37,8 @@
       <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
       <obj_property name="CellHeight">100</obj_property>
       <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
-      <obj_property name="AnalogYRangeMin">225200.000000</obj_property>
-      <obj_property name="AnalogYRRangeMax">229000.000000</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">80000.000000</obj_property>
       <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
       <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
       <obj_property name="AnalogHorizLine">0.000000</obj_property>

@@ -4,7 +4,7 @@ module testBench;
     reg clk;
     wire [15:0] sine;
     wire [19:0] shifted;
-    wire [12:0] shift = 12'd500;
+    wire [12:0] shift = 12'd1024;
     
     //initates and connects the sine generator to the testBench
     sine_gen baseSineGen(

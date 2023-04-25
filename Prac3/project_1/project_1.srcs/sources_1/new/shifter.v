@@ -41,8 +41,8 @@ module shifter(
     
     initial begin
         $readmemh("sine_LUT_values.mem", rom_memory); //Use IP of BRAM instead of this command
-        i = shift;
-        j = (shift==256) ? 1024 : (shift+256)%1024;
+        i = shift - 1;
+        j = (shift+256)%1024;
     end
     
     assign sine_shifted = out;
@@ -66,57 +66,11 @@ module shifter(
         end
         
         sine_s = rom_memory[i]; //sine of the shifted value
-        cos_s = rom_memory[j]; //cos of the shifted value
+        cos_s = rom_memory[j]; //cos of the shifted value        
         
-        //term1
+        term1 = sine*cos_s/16'hFFFF;
+        term2 = cos_in*sine_s/16'hFFFF;
+        out = 2'd2*((term1 + term2));
         
-        if(sine>=16'h7FFF) begin
-            if (cos_s>=16'h7FFF) begin
-                term1 = ((sine-16'h7FFF)*(cos_s-16'h7FFF));
-            end else begin
-                term1 = ((sine-16'h7FFF)*(16'h7FFF-cos_s));
-            end
-        end else begin
-            if (cos_s>=16'h7FFF) begin
-                term1 = ((16'h7FFF-sine)*(cos_s-16'h7FFF));
-            end else begin
-                term1 = ((16'h7FFF-sine)*(16'h7FFF-cos_s));
-            end
-        end
-        
-        //term2
-        
-        if(sine_s>=16'h7FFF) begin
-            if (cos_in>=16'h7FFF) begin
-                term2 = ((sine_s-16'h7FFF)*(cos_in-16'h7FFF));
-            end else begin
-                term2 = ((sine_s-16'h7FFF)*(16'h7FFF-cos_in));
-            end
-        end else begin
-            if (cos_in>=16'h7FFF) begin
-                term2 = ((16'h7FFF-sine_s)*(cos_in-16'h7FFF));
-            end else begin
-                term2 = ((16'h7FFF-sine_s)*(16'h7FFF-cos_in));
-            end
-        end
-        
-        out = 2*((term1 + term2));
-        
-        if (p == 0) begin
-            p = (out == 31'h37fd8) ? 1'b1 : 1'b0;
-            out = out + 16'h7fff;
-        end else begin
-            p = (out == 31'h37fd8) ? 1'b0 : 1'b1;
-            out = 16'hffff*16'd2 - out;
-        end
-        
-        out = out - 31'hd0000;
-        
-        i = i+ 1;
-        j = j+1;
-        if(i == SIZE)
-            i = 0;
-        if(j == SIZE)
-            j = 0;
     end
 endmodule
