@@ -23,7 +23,7 @@
 module shifter(
     input clk,
     input [15:0] sine,
-    input [12:0] shift,
+    input [12:0] shift, //in degrees
     output [19:0] sine_shifted
     );
     
@@ -41,36 +41,17 @@ module shifter(
     
     initial begin
         $readmemh("sine_LUT_values.mem", rom_memory); //Use IP of BRAM instead of this command
-        i = shift - 1;
-        j = (shift+256)%1024;
+        i = shift*1024/360;
     end
     
     assign sine_shifted = out;
     
     always @(posedge clk)begin
-        if (sine>=16'h8000) begin
-            cos_in = 16'h7fff**2'd2 - ((sine-16'h8000)**2'd2);
-        end else begin
-            cos_in = 16'h7fff**2'd2 - ((16'hffff-sine-16'h8000)**2'd2);
-        end
-        
-        cos_in = $sqrt(cos_in);
-        
-        
-        if (k == 0) begin
-            k = (cos_in == 1'b0) ? 1'b1 : 1'b0;
-            cos_in = cos_in + 16'h7fff;
-        end else begin
-            k = (cos_in == 1'b0) ? 1'b0 : 1'b1;
-            cos_in = 16'h7fff - cos_in;
-        end
-        
-        sine_s = rom_memory[i]; //sine of the shifted value
-        cos_s = rom_memory[j]; //cos of the shifted value        
-        
-        term1 = sine*cos_s/16'hFFFF;
-        term2 = cos_in*sine_s/16'hFFFF;
-        out = 2'd2*((term1 + term2));
-        
+    
+        out = 2'd2*rom_memory[i];
+        i = i+ 1;
+        if(i == SIZE)
+            i = 0;
+    
     end
 endmodule
