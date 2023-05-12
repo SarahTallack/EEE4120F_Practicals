@@ -1,0 +1,9 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/heath/Downloads/BCD_Decoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BCD_Decoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/heath/Downloads/SS_Driver.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SS_Driver
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/heath/Downloads/Clock.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module WallClock
+INFO: [VRFC 10-2458] undeclared symbol SegmentDrivers, assumed default net type wire [C:/Users/heath/Downloads/Clock.v:37]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/UCT 2023/EEE4120F High Performance Embedded Systems/YODA/tutorial_BCD/tutorial_BCD.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
