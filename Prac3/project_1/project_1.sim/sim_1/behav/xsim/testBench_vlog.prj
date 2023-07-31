@@ -1,6 +1,5 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../project_1.srcs/sources_1/ip/bram_Sine_LUT/sim/bram_Sine_LUT.v" \
 "../../../../project_1.srcs/sources_1/new/shifter.v" \
 "../../../../project_1.srcs/sources_1/new/sine_gen.v" \
 "../../../../project_1.srcs/sim_1/new/testBench.v" \
